@@ -2,3 +2,7 @@ a {
   text-decoration: none;
   color: inherit;
 }
+
+pre {
+  font-size: 11px;
+}
