@@ -1,18 +1,12 @@
-import React, {useState} from "react";
-import axios from "axios";
-
-
-function onBtClick() {
-  console.log("abc");
-}
+import React, { useState } from "react";
 
 function App() {
-  const[name, setName] = useState("Init-Pressed");
+  const [name, setName] = useState("Init-Pressed");
+  const [status, setStatus] = useState(false);
 
   function getStatus() {
-    axios.get("http://localhost:8080/",  { crossdomain: true }).then(response => {
-      setName(response.data.name);
-    });
+    setStatus(!status);
+    setName(status ? "Yes" : "No");
   }
 
   return (
