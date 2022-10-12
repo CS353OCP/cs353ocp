@@ -1,22 +1,23 @@
-import React, { useState } from "react";
+import Component from "react";
+import { Routes, Route, Navigate } from "react-router-dom"
 
-function App() {
-  const [name, setName] = useState("Init-Pressed");
-  const [status, setStatus] = useState(false);
+import Main from './Pages/Main';
+import Page1 from './Pages/Page1';
+import Page2 from './Pages/Page2';
 
-  function getStatus() {
-    setStatus(!status);
-    setName(status ? "Yes" : "No");
+class App extends Component {
+  render() {
+    return (
+      <div>
+        <Routes>
+          <Route path="/" element={< Main />} />
+          <Route path="/page1" element={< Page1 />} />
+          <Route path="/page2" element={< Page2 />} />
+          <Route path="*" element={< Navigate to="/error" replace />} />
+        </Routes>
+      </div>
+    );
   }
-
-  return (
-    <div className="App">
-      <header className="App-header">
-        <button onClick={getStatus} type="submit">Connected?</button>
-      </header>
-      <h1>Status: {name}</h1>
-    </div>
-  );
 }
 
 export default App;
