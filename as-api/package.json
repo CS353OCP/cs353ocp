@@ -2,9 +2,9 @@
   "name": "as-api",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "main.js",
   "scripts": {
-    "start":"nodemon main.js"
+    "start": "nodemon main.js"
   },
   "author": "",
   "license": "ISC",
