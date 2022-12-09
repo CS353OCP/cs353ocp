@@ -1,23 +1,37 @@
 import Component from "react";
-import { Routes, Route, Navigate } from "react-router-dom"
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import React from 'react';
 
 import Main from './Pages/Main';
 import Page1 from './Pages/Page1';
 import Page2 from './Pages/Page2';
+import Login from "./Pages/Login";
+import Register from "./Pages/Register";
+import Home from "./Pages/Home";
+import Header from "./Pages/Header";
 
-class App extends Component {
-  render() {
+
+const App =()=> {
     return (
       <div>
-        <Routes>
-          <Route path="/" element={< Main />} />
-          <Route path="/page1" element={< Page1 />} />
-          <Route path="/page2" element={< Page2 />} />
-          <Route path="*" element={< Navigate to="/error" replace />} />
-        </Routes>
+          <BrowserRouter>
+              <Header/>
+
+              <Routes>
+
+                <Route path="/login" element={< Login />} />
+                <Route path="/" element={< Main />} />
+                <Route path="/Home" element = {<Home />} />
+                <Route path="/page1" element={< Page1 />} />
+                <Route path="/page2" element={< Page2 />} />
+                <Route path="/register" element={< Register />} />
+
+                <Route path="*" element={< Navigate to="/error" replace />} />
+            </Routes>
+          </BrowserRouter>
       </div>
     );
-  }
+
 }
 
 export default App;

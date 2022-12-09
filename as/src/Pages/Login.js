@@ -2,10 +2,14 @@ import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import "./Login.css";
+import {Route, useNavigate} from "react-router-dom";
+
 
 export default function Login() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+
+    const navigate = useNavigate();
 
     function validateForm() {
         return email.length > 0 && password.length > 0;
@@ -13,6 +17,8 @@ export default function Login() {
 
     function handleSubmit(event) {
         event.preventDefault();
+        navigate('/Home');
+
     }
 
     return (
