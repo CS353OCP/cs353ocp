@@ -13,7 +13,7 @@ const Main = () => {
 
     }
     const Register = () =>{
-        navigate('register');
+        navigate('/register');
     }
 
 

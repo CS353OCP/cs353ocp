@@ -16,16 +16,13 @@ const App =()=> {
       <div>
           <BrowserRouter>
               <Header/>
-
               <Routes>
-
                 <Route path="/login" element={< Login />} />
-                <Route path="/" element={< Main />} />
                 <Route path="/Home" element = {<Home />} />
                 <Route path="/page1" element={< Page1 />} />
                 <Route path="/page2" element={< Page2 />} />
                 <Route path="/register" element={< Register />} />
-
+                <Route path="/" element={< Main />} />
                 <Route path="*" element={< Navigate to="/error" replace />} />
             </Routes>
           </BrowserRouter>

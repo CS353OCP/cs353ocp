@@ -18,7 +18,6 @@ export default function Login() {
     function handleSubmit(event) {
         event.preventDefault();
         navigate('/Home');
-
     }
 
     return (
