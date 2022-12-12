@@ -15,7 +15,7 @@ app.listen(5000,() => console.log("Server listening at port 5000"));
 
 // Return all people
 app.get("/people", (req, res) => {
-    res.send("People");
+    res.send("people");
 });
 
 // Return all Admins
