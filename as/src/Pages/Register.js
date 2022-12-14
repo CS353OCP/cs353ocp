@@ -5,12 +5,8 @@ import {Route, useNavigate} from "react-router-dom";
 import axios from 'axios';
 import {createUser} from "../api";
 
-
-
 const Register = () =>{
-
     const baseURL = 'http://localhost:5000/';
-
     const navigate  = useNavigate();
     const [regData, setRegData] = useState ({
         name: '',
@@ -19,11 +15,9 @@ const Register = () =>{
         password: '',
 
     });
-
     function validateForm() {
         return regData.email.length > 0 && regData.password.length > 0;
     }
-
     function handleSubmit(event) {
         event.preventDefault();
         createUser(regData);
@@ -37,7 +31,7 @@ const Register = () =>{
             .then((response) => {
                 setRegData(response.data);
             });*/
-        navigate('/Home');
+        navigate('/home');
     }
 
     return (
