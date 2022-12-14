@@ -1,17 +1,56 @@
 // Dependencies
 const express = require("express");
+const bodyParser = require("body-parser");
+const bcrypt = require("bcrypt-nodejs");
+const cors = require("cors");
 
 // Configuration
 const app = express();
+app.use(cors());
+app.use(bodyParser.json());
 
+// Routing Files
+
+// Login & Register
+const register = require("./controllers/register");
+const login = require("./controllers/login");
+
+// User 
+const profile = require("./controllers/profile");
+
+// People Related
+const people = require("./controllers/people");
+const organizators = require("./controllers/organizators");
+const admins = require("./controllers/admins");
+
+// Event Related
+const events = require("./controllers/events");
+
+// Place Related
+const places = require("./controllers/places");
+
+// User related network
+const following = require("./controllers/following");
+const followers = require("./controllers/followers");
+
+// User related favorite
+const favoriteEvents = require("./controllers/favorite-events");
+const favoritePlaces = require("./controllers/favorite-places");
+
+// Unexpected Endpoints
+const error = require("./controllers/error");
 
 // Server
 app.listen(5000,() => console.log("Server listening at port 5000"));
 
-
 // Routing
 
 // Get Routes
+
+// Return profile
+app.get("/profile", (req, res) => { 
+    res.send("profile");
+});
 
 // Return all people
 app.get("/people", (req, res) => {
@@ -69,3 +108,6 @@ app.get("/", (req, res) => {
 });
 
 // Add otherwise forwarding
+server.get('*', (req, res, next) => {
+    res.send("Error");
+});
