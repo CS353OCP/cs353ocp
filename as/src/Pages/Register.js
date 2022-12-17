@@ -47,7 +47,7 @@ const Register = () =>{
         <div className="register-wrapper">
             <div className="register-box">
                 <div className="register-logo">
-                    <span>E V E N T B R I T E</span>
+                    <div style={{color:"#fff"}}>E V E N T <span style={{color:"#B9E0FF"}}>B R I T E</span></div>
                 </div>
                 <div className="register-box-inner">
                     <Form onSubmit={handleSubmit}>
@@ -90,7 +90,7 @@ const Register = () =>{
                             />
                         </Form.Group>
                         <div className="register-box-btns">
-                            <Button block size="lg" type="submit" disabled={!validateForm()}>
+                            <Button block size="medium" type="submit" disabled={!validateForm()} style={{marginRight:'2rem'}}>
                                 Register
                             </Button>
                             <Item></Item>

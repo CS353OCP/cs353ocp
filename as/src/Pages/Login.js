@@ -33,7 +33,7 @@ export default function Login() {
         <div className="login-wrapper">
             <div className="login-box">
                 <div className="login-logo">
-                    <span>E V E N T B R I T E</span>
+                <div style={{color:"#fff"}}>E V E N T <span style={{color:"#B9E0FF"}}>B R I T E</span></div>
                 </div>
                 <div className="login-box-inner">
                     <Form onSubmit={handleSubmit}>

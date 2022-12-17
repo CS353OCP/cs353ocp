@@ -22,7 +22,7 @@ export default function Header() {
     }
 
     return (
-        <AppBar position="static" sx={{height:"7vh"}}>
+        <AppBar position="static" sx={{height:"7vh", backgroundColor:"#6C4AB6"}}>
             <Toolbar>
                 {/*Inside the IconButton, we
                    can render various icons*/}
@@ -42,7 +42,7 @@ export default function Header() {
 
                 <Typography variant="h6"
                     component="div" sx={{ flexGrow: 1 }}>
-                    Home Page
+                    E V E N T B R I T E
                 </Typography>
                 <Button color="inherit" onClick={Login}>Login</Button>
                 <Button color="inherit" onClick={Register}>Register</Button>

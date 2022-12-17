@@ -4,11 +4,13 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    background-color: #8D9EFF;
 }
 
 .login-box{
     min-width:80vh;
-    background-color: bisque;
+    background-color: #6C4AB6;
+    color: #B9E0FF;
     display: grid;
     grid-template-columns: 1fr 3fr;
     align-items: center;
