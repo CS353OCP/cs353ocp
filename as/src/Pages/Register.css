@@ -1,0 +1,37 @@
+.register-wrapper{
+    height:93vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.register-box{
+    min-width:80vh;
+    background-color: bisque;
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    align-items: center;
+    min-height: 30vh;
+    border-radius: 20px;
+}
+
+.register-logo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.register-box-inner{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.register-box-btns{
+    display: flex;
+    margin-top: 1.5rem;
+    justify-content: center;
+
+}
