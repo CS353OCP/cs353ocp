@@ -1,0 +1,37 @@
+.login-wrapper{
+    height:93vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-box{
+    min-width:80vh;
+    background-color: bisque;
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    align-items: center;
+    min-height: 30vh;
+    border-radius: 20px;
+}
+
+.login-logo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-box-inner{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.login-box-btns{
+    display: flex;
+    margin-top: 1.5rem;
+    justify-content: center;
+
+}

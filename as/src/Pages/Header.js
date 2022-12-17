@@ -22,7 +22,7 @@ export default function Header() {
     }
 
     return (
-        <AppBar position="static">
+        <AppBar position="static" sx={{height:"7vh"}}>
             <Toolbar>
                 {/*Inside the IconButton, we
                    can render various icons*/}
