@@ -7,7 +7,6 @@ import {createUser} from "../api";
 import "./Register.css"
 
 const Register = () =>{
-    const baseURL = 'http://localhost:5000/';
     const navigate  = useNavigate();
     const [regData, setRegData] = useState ({
         name: '',
@@ -21,7 +20,14 @@ const Register = () =>{
     }
     function handleSubmit(event) {
         event.preventDefault();
-        createUser(regData);
+        let data = {
+            name: regData.name,
+            surname: regData.surname,
+            email: regData.email,
+            password: regData.password
+        }
+
+        createUser(data);
         /*axios
             .post(baseURL, {
                 name: regData.name,
@@ -38,7 +44,7 @@ const Register = () =>{
         let navigate = useNavigate();
         return (
             <>
-              <Button onClick={() => navigate(-1)}> Back </Button> 
+              <Button onClick={() => navigate(-1)}> Back </Button>
             </>
         );
     }
@@ -95,11 +101,10 @@ const Register = () =>{
                             </Button>
                             <Item></Item>
                         </div>
-                        
+
                     </Form>
                 </div>
             </div>
-            
         </div>
     );
 }

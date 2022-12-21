@@ -17,6 +17,7 @@ export default function Login() {
 
     function handleSubmit(event) {
         event.preventDefault();
+
         navigate('/Home');
     }
 
@@ -24,7 +25,7 @@ export default function Login() {
         let navigate = useNavigate();
         return (
             <>
-              <Button onClick={() => navigate(-1)}> Back </Button> 
+              <Button onClick={() => navigate(-1)}> Back </Button>
             </>
         );
     }
@@ -60,13 +61,13 @@ export default function Login() {
                             </Button>
                             <Item></Item>
                         </div>
-                        
+
                     </Form>
                 </div>
-                
+
             </div>
-            
-           
+
+
         </div>
     );
 }

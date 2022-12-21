@@ -9,8 +9,9 @@ import Login from "./Pages/Login";
 import Register from "./Pages/Register";
 import Home from "./Pages/Home";
 import Header from "./Pages/Header";
+import Places from "./Pages/Places"
 
-
+//                <Route path="*" element={< Navigate to="/error" replace />} />
 const App =()=> {
     return (
       <div>
@@ -21,8 +22,9 @@ const App =()=> {
                 <Route path="/Home" element = {<Home />} />
                 <Route path="/register" element={< Register />} />
                 <Route path="/" element={< Main />} />
-                <Route path="*" element={< Navigate to="/error" replace />} />
-            </Routes>
+                <Route path="/Places" element={< Places />} />
+
+              </Routes>
           </BrowserRouter>
       </div>
     );

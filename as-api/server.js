@@ -4,18 +4,26 @@ const bodyParser = require("body-parser");
 const bcrypt = require("bcrypt-nodejs");
 const cors = require("cors");
 
+
 // Configuration
 const app = express();
 app.use(cors());
+/*
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+});*/
 app.use(bodyParser.json());
 
 // Routing Files
 
 // Login & Register
+/*
 const register = require("./controllers/register");
 const login = require("./controllers/login");
 
-// User 
+// User
 const profile = require("./controllers/profile");
 
 // People Related
@@ -39,7 +47,7 @@ const favoritePlaces = require("./controllers/favorite-places");
 
 // Unexpected Endpoints
 const error = require("./controllers/error");
-
+*/
 // Server
 app.listen(5000,() => console.log("Server listening at port 5000"));
 
@@ -48,7 +56,7 @@ app.listen(5000,() => console.log("Server listening at port 5000"));
 // Get Routes
 
 // Return profile
-app.get("/profile", (req, res) => { 
+app.get("/profile", (req, res) => {
     res.send("profile");
 });
 
@@ -73,7 +81,8 @@ app.get("/organizators", (req, res) => {
 });
 
 // Return All places
-app.get("/places", (req, res) => {
+app.get("/places",cors(), (req, res) => {
+    console.log("Alllasdads");
     res.send("All places");
 });
 
@@ -106,8 +115,11 @@ app.get("/favorite/places", (req, res) => {
 app.get("/", (req, res) => {
     res.send("Home");
 });
-
+app.post("/places", (req, res) => {
+    console.log(req.body);
+    res.send(JSON.stringify(req.body));
+});
 // Add otherwise forwarding
-server.get('*', (req, res, next) => {
+app.get('*', (req, res, next) => {
     res.send("Error");
 });
