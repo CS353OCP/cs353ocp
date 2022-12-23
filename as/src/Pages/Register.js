@@ -6,7 +6,7 @@ import axios from 'axios';
 import {createUser} from "../api";
 import "./Register.css"
 
-const Register = () =>{
+const Register = (props) =>{
     const navigate  = useNavigate();
     const [regData, setRegData] = useState ({
         name: '',
@@ -26,18 +26,8 @@ const Register = () =>{
             email: regData.email,
             password: regData.password
         }
-
         createUser(data);
-        /*axios
-            .post(baseURL, {
-                name: regData.name,
-                surname: regData.surname,
-                email: regData.email,
-                password: regData.password
-            })
-            .then((response) => {
-                setRegData(response.data);
-            });*/
+        props.loginButton();
         navigate('/home');
     }
     const Item = () => {

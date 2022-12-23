@@ -5,7 +5,7 @@ import "./Login.css";
 import {Route, useNavigate} from "react-router-dom";
 
 
-export default function Login() {
+export default function Login(props) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
@@ -15,10 +15,15 @@ export default function Login() {
         return email.length > 0 && password.length > 0;
     }
 
+
     function handleSubmit(event) {
         event.preventDefault();
 
         navigate('/Home');
+    }
+
+    const LogIn = ()=>{
+        props.loginButton();
     }
 
     const Item = () => {
@@ -56,7 +61,7 @@ export default function Login() {
                         />
                         </Form.Group>
                         <div className="login-box-btns">
-                            <Button block size="medium" type="submit" disabled={!validateForm()} style={{marginRight:'2rem'}}>
+                            <Button onClick={LogIn} block size="medium" type="submit" disabled={!validateForm()} style={{marginRight:'2rem'}}>
                             Login
                             </Button>
                             <Item></Item>

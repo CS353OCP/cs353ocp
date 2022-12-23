@@ -2,21 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0ebd754f-9694-42ec-8df3-97b7fab6c166" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/as/src/Pages/Creator.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/as/src/Pages/Event.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/as/src/Pages/Events.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/as/src/Pages/Friend.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/as/src/Pages/Friends.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/as/src/Pages/PaymentScreen.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/as/src/Pages/Places.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/as/src/Pages/Profile.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/as-api/package-lock.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/as-api/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/as-api/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/as-api/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/as-api/server.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/as/package-lock.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/as/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/as/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/as/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/as/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/as/src/Pages/Creator.js" beforeDir="false" afterPath="$PROJECT_DIR$/as/src/Pages/Creator.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/as/src/Pages/Event.js" beforeDir="false" afterPath="$PROJECT_DIR$/as/src/Pages/Event.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/as/src/Pages/Events.js" beforeDir="false" afterPath="$PROJECT_DIR$/as/src/Pages/Events.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/as/src/Pages/Friend.js" beforeDir="false" afterPath="$PROJECT_DIR$/as/src/Pages/Friend.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/as/src/Pages/Friends.js" beforeDir="false" afterPath="$PROJECT_DIR$/as/src/Pages/Friends.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/as/src/Pages/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/as/src/Pages/Header.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/as/src/Pages/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/as/src/Pages/Login.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/as/src/Pages/PaymentScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/as/src/Pages/PaymentScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/as/src/Pages/Profile.js" beforeDir="false" afterPath="$PROJECT_DIR$/as/src/Pages/Profile.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/as/src/Pages/Register.js" beforeDir="false" afterPath="$PROJECT_DIR$/as/src/Pages/Register.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/as/src/api/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/as/src/api/index.js" afterDir="false" />
     </list>
@@ -74,6 +71,8 @@
       <workItem from="1671099750692" duration="1825000" />
       <workItem from="1671647280509" duration="133000" />
       <workItem from="1671647425468" duration="9679000" />
+      <workItem from="1671718722550" duration="12794000" />
+      <workItem from="1671815063105" duration="1204000" />
     </task>
     <servers />
   </component>

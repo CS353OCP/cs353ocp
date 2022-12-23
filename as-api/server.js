@@ -119,7 +119,19 @@ app.post("/places", (req, res) => {
     console.log(req.body);
     res.send(JSON.stringify(req.body));
 });
+app.get("/eventsList", (req, res) => {
+    console.log(req.body);
+    let a = ["football ", "basketball ", "piyasaYapmaca "];
+    res.send(a);
+});
+
+app.get("/nearEventsList", (req, res) => {
+    console.log(req.body);
+    let a = ["piyasaYapmaca "];
+    res.send(a);
+});
 // Add otherwise forwarding
 app.get('*', (req, res, next) => {
     res.send("Error");
 });
+

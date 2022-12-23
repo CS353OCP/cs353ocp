@@ -9,16 +9,54 @@ import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import { useNavigate } from "react-router-dom";
+import {useState} from "react";
 
-export default function Header() {
-    const navigate = useNavigate("");
+const Header=({isLoggedIn=false, logoutButton})=> {
 
+    const navigate = useNavigate();
     const Login = () => {
         navigate('/login');
     }
 
     const Register = () => {
         navigate('register');
+    }
+    const Friends = () => {
+        navigate('friends');
+    }
+    const Events = () => {
+        navigate('events');
+    }
+    const Profile = () => {
+        navigate('profile');
+    }
+
+    const Logout = () => {
+        logoutButton();
+        navigate('/');
+        window.location.reload();
+    }
+
+
+    const Navbar = () =>{
+        let navbar;
+            if(isLoggedIn){
+                navbar = <>
+                    <Button color="inherit" onClick={Events}>Events</Button>
+                    <Button color="inherit" onClick={Friends}>Friends</Button>
+                    <Button color="inherit" onClick={Profile}>Profile</Button>
+                    <Button color="inherit" onClick={Logout}>LogOut</Button>
+
+                </>
+            }
+            else{
+                navbar=<>
+                    <Button color="inherit" onClick={Events}>Events</Button>
+                    <Button color="inherit" onClick={Login}>Login</Button>
+                    <Button color="inherit" onClick={Register}>Register</Button>
+                </>
+            }
+        return navbar;
     }
 
     return (
@@ -43,10 +81,12 @@ export default function Header() {
                 <Typography variant="h6"
                     component="div" sx={{ flexGrow: 1 }}>
                     E V E N T B R I T E
+
                 </Typography>
-                <Button color="inherit" onClick={Login}>Login</Button>
-                <Button color="inherit" onClick={Register}>Register</Button>
+                {Navbar()}
             </Toolbar>
         </AppBar>
     );
 }
+
+export default Header;
