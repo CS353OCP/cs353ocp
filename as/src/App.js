@@ -21,6 +21,9 @@ import Creator from "./Pages/Creator"
 //                <Route path="*" element={< Navigate to="/error" replace />} />
 const App =()=> {
     const [isLoggedIn, setLoggedIn ] = useState(false);
+    //sonra bu tokeni logine vermek lazım gerisi aynı gibi
+    const [token, setToken] = useState();
+
 
     const logIn = ()=>{
         setLoggedIn(true);
