@@ -329,7 +329,7 @@ function flushDB() {
     });
 
     // user 
-    query = 'DROP TABLE user;';
+    var query = 'DROP TABLE user;';
     connection.query(query, function (error, results, fields) {
         if (error) {
             console.error('ERROR @ flush  user' + error.stack);
@@ -365,7 +365,7 @@ function flushDB() {
     });
 
     // place 
-    query = 'DROP TABLE place;';
+    var query = 'DROP TABLE place;';
     connection.query(query, function (error, results, fields) {
         if (error) {
             console.error('ERROR @ flush place' + error.stack);
@@ -1072,11 +1072,15 @@ app.post("/places", (req, res) => {
     res.send(JSON.stringify(req.body));
 });
 
+// Kankam ben silmedim
+// Sen bakınca silersin
+// Alttaki ikiliyi
+/*
 app.get("/eventsList", (req, res) => {
     console.log(req.body);
     let a = ["football ", "basketball ", "piyasaYapmaca "];
     res.send(a);
-});
+});*/
 
 app.get("/nearEventsList", (req, res) => {
     console.log(req.body);

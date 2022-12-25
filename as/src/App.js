@@ -16,6 +16,8 @@ import Events from "./Pages/Events";
 import Event from "./Pages/Event";
 import Profile from "./Pages/Profile";
 import Creator from "./Pages/Creator"
+import PaymentScreen from "./Pages/PaymentScreen";
+import Place from "./Pages/Place";
 
 
 //                <Route path="*" element={< Navigate to="/error" replace />} />
@@ -25,12 +27,24 @@ const App =()=> {
     const [token, setToken] = useState();
 
 
+
+    const[event, setEvent]=useState([{
+        available: 0,
+        id: 0,
+        name: '',
+        date: "0000-00-00",
+        quota: 0,
+        restriction: 0,
+        type: "",
+    }]);
+
     const logIn = ()=>{
         setLoggedIn(true);
     }
     const logOut=()=>{
         setLoggedIn(false);
     }
+
 
     return (
       <div>
@@ -42,12 +56,14 @@ const App =()=> {
                 <Route path="/register" element={< Register loginButton={logIn} />} />
                 <Route path="/" element={< Main />} />
                 <Route path="/Places" element={< Places />} />
-                <Route path="/Events" element={< Events isLoggedIn ={isLoggedIn}/>} />
-                <Route path="/Event" element={< Event />} />
+                <Route path="/Events" element={< Events isLoggedIn ={isLoggedIn} setEvent={setEvent}/>} />
+                <Route path="/Event" element={< Event event/>} />
                 <Route path="/Profile" element={< Profile />} />
                 <Route path="/Friend" element={< Friend />} />
                 <Route path="/Friends" element={< Friends />} />
                 <Route path="/Creator" element={< Creator />} />
+                <Route path="/PaymentScreen" element={< PaymentScreen />} />
+                <Route path="/Place" element={< Place />} />
 
               </Routes>
           </BrowserRouter>

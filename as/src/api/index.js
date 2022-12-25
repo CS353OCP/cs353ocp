@@ -14,12 +14,29 @@ export const createUser = (newUser)=>axios.post(url + "/places", newUser)
     });
 //export const login = (newUser)=>axios.post(url, newUser);
 
-export  const  getEvents = ()=>axios.get(url+"/eventsList")
+export  const  getEvents = ()=>axios.get(url+"/events")
     .then((response) => {
         console.log(response);
         return response.data;
     });
 export  const  getNearEvents = ()=>axios.get(url+"/nearEventsList")
+    .then((response) => {
+        console.log(response);
+        return response.data;
+    });
+
+export  const  getPlaces = ()=>axios.get(url+"/places")
+    .then((response) => {
+        console.log(response);
+        return response.data;
+    });
+export  const  getFriends = ()=>axios.get(url+"/places")
+    .then((response) => {
+        console.log(response);
+        return response.data;
+    });
+
+export  const  login = (email,password)=>axios.post(url+"/places")
     .then((response) => {
         console.log(response);
         return response.data;

@@ -30,7 +30,9 @@ const Header=({isLoggedIn=false, logoutButton})=> {
     const Profile = () => {
         navigate('profile');
     }
-
+    const Places = () => {
+        navigate('places');
+    }
     const Logout = () => {
         logoutButton();
         navigate('/');
@@ -43,6 +45,8 @@ const Header=({isLoggedIn=false, logoutButton})=> {
             if(isLoggedIn){
                 navbar = <>
                     <Button color="inherit" onClick={Events}>Events</Button>
+                    <Button color="inherit" onClick={Places}>Places</Button>
+
                     <Button color="inherit" onClick={Friends}>Friends</Button>
                     <Button color="inherit" onClick={Profile}>Profile</Button>
                     <Button color="inherit" onClick={Logout}>LogOut</Button>
@@ -52,6 +56,8 @@ const Header=({isLoggedIn=false, logoutButton})=> {
             else{
                 navbar=<>
                     <Button color="inherit" onClick={Events}>Events</Button>
+                    <Button color="inherit" onClick={Places}>Places</Button>
+
                     <Button color="inherit" onClick={Login}>Login</Button>
                     <Button color="inherit" onClick={Register}>Register</Button>
                 </>
