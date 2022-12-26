@@ -55,10 +55,10 @@ function populateDB() {
     insertQuery("INSERT INTO event(name, date, type, quota, available, restrictions, price) VALUES('Live DJ',06/12/2022,'Party',10,10,1,30);");
 
     // place
-    insertQuery("INSERT INTO place VALUES(1,'Kite','Turkey','Ankara','Cankaya');");
+    insertQuery("INSERT INTO place VALUES(1,'Kite','Canada','Ankara','Cankaya');");
     insertQuery("INSERT INTO place VALUES(2,'Rudy','Turkey','Ankara','Cankaya');");
-    insertQuery("INSERT INTO place VALUES(3,'Roxanne','Turkey','Ankara','Kizilay');");
-    insertQuery("INSERT INTO place VALUES(4,'Alti Ustu','Turkey','Ankara','Kizilay');");
+    insertQuery("INSERT INTO place VALUES(3,'Roxanne','America','Ankara','Kizilay');");
+    insertQuery("INSERT INTO place VALUES(4,'Alti Ustu','Iraq','Ankara','Kizilay');");
     insertQuery("INSERT INTO place VALUES(5,'ASPAVA','Turkey','Ankara','Esat');");
     insertQuery("INSERT INTO place VALUES(6,'Bowling Center','Turkey','Ankara','Bilkent');");
 
@@ -1089,6 +1089,58 @@ app.get("/favorite/places", (req, res) => {
         }
     });
 });
+
+//Get min balance
+app.get("/balance/min", (req, res) => {
+    //const id = 3; //req.body.id;
+    const query = "SELECT MIN(balance), id, name FROM user;";
+    connection.query(query, function (error, results, fields) {
+        if (error) {
+            console.error('error min balance: ' + error.stack);
+            return;
+        }
+        else {
+            res.send(results[0]);
+            console.log("Answer from database is\t", results[0]);
+            //return results[0];
+        }
+    });
+});
+
+//Get max balance
+app.get("/balance/max", (req, res) => {
+    //const id = 3; //req.body.id;
+    const query = "SELECT MAX(balance), id, name FROM user;";
+    connection.query(query, function (error, results, fields) {
+        if (error) {
+            console.error('error min balance: ' + error.stack);
+            return;
+        }
+        else {
+            res.send(results[0]);
+            console.log("Answer from database is\t", results[0]);
+            //return results[0];
+        }
+    });
+});
+
+//Group by country
+app.get("/events/:country", (req, res) => {
+    //const id = 3; //req.body.id;
+    const query = "SELECT event.name, country, province, address FROM event, place, is_at WHERE event.id=eid AND place.id=pid AND country='"+req.params.country+"';";
+    connection.query(query, function (error, results, fields) {
+        if (error) {
+            console.error('error min balance: ' + error.stack);
+            return;
+        }
+        else {
+            res.send(results);
+            console.log("Answer from database is\t", results);
+            //return results[0];
+        }
+    });
+});
+
 
 // Main Directory
 app.get("/", (req, res) => {
