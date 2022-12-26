@@ -12,9 +12,22 @@ export const createUser = (newUser)=>axios.post(url + "/places", newUser)
     }, (error) => {
         console.log(error);
     });
-//export const login = (newUser)=>axios.post(url, newUser);
-
+export const loginReq = async (email,password)=>axios.post(url + "/login", {
+    email: email,
+    password: password
+}).then((response) => {
+    console.log(response);
+    return response;
+});
 export  const  getEvents = ()=>axios.get(url+"/events")
+    .then((response) => {
+        console.log(response);
+        return response.data;
+    });
+
+export  const  getUser = (id)=>axios.get(url+"/profile",{
+    id:id,
+})
     .then((response) => {
         console.log(response);
         return response.data;
@@ -36,7 +49,17 @@ export  const  getFriends = ()=>axios.get(url+"/places")
         return response.data;
     });
 
-export  const  login = (email,password)=>axios.post(url+"/places")
+/*export  const  login = (email,password)=>axios.post(url+"/places")
+    .then((response) => {
+        console.log(response);
+        return response.data;
+    });*/
+export  const   register = async (name, age, email,password)=>axios.post(url+"/register", {
+    name: name,
+    age: age,
+    email: email,
+    password: password
+})
     .then((response) => {
         console.log(response);
         return response.data;

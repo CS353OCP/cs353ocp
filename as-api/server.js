@@ -5,7 +5,9 @@ const bcrypt = require("bcrypt-nodejs");
 const cors = require("cors");
 var mysql = require('mysql'); //Library to connect MySql database
 
-
+var succesfullLogin = false;
+var succesfullRegister = false;
+var userId;
 // Server Configuration
 const app = express();
 app.use(cors());
@@ -219,7 +221,7 @@ function populateDB() {
     insertQuery("INSERT INTO owns VALUES(5,11);");
 
     // admin
-    // id 
+    // id
     insertQuery("INSERT INTO admin VALUES(1)");
     insertQuery("INSERT INTO admin VALUES(2)");
 
@@ -328,7 +330,7 @@ function flushDB() {
         }
     });
 
-    // user 
+    // user
     var query = 'DROP TABLE user;';
     connection.query(query, function (error, results, fields) {
         if (error) {
@@ -364,7 +366,7 @@ function flushDB() {
         }
     });
 
-    // place 
+    // place
     var query = 'DROP TABLE place;';
     connection.query(query, function (error, results, fields) {
         if (error) {
@@ -426,7 +428,7 @@ function flushDB() {
          }
      });
 
-     
+
      // AllPlaces
      var query = 'DROP View AllPlaces;';
      connection.query(query, function (error, results, fields) {
@@ -439,7 +441,7 @@ function flushDB() {
          }
      });
 
-      
+
      // AllEvents
      var query = 'DROP View AllEvents;';
      connection.query(query, function (error, results, fields) {
@@ -590,7 +592,7 @@ function instantiateDB() {
     });
     */
 
-    // owns 
+    // owns
     query = 'CREATE TABLE owns(uid INT NOT NULL, eid INT NOT NULL, PRIMARY KEY(uid, eid), CONSTRAINT fk_owned_events FOREIGN KEY (uid) REFERENCES user(id), FOREIGN KEY (eid) REFERENCES event(id) );'
     connection.query(query, function (error, results, fields) {
         if (error) {
@@ -761,21 +763,32 @@ function selectUserByID(id) {
 }
 
 function login(email, pass) {
+
     let query = 'SELECT id FROM user WHERE password="' + pass + '" AND email="' + email + '";';
+    userId = query;
+    //let succesfull = false;
     connection.query(query, function (error, results, fields) {
-        if (error) {
-            //console.error("error logging in: " + error.stack);
-            throw Error('Login Error: Connection Failure');
+            if (error) {
+                return false;
+                throw Error('Login Error: Connection Failure');
+
+            } else if (results.length === 0) {
+                //console.log('Answer from database is\t', results);
+                return false;
+                throw Error('Login Error: Wrong Credentials');
+
+            } else {
+                //return true;
+
+                console.log('Answer from database is\t', results);
+                console.log("Successful Login");
+                succesfullLogin = true;
+                console.log("succesfulllk is 0", succesfullLogin);
+            }
         }
-        else if (results.length === 0) {
-            //console.log('Answer from database is\t', results);
-            throw Error('Login Error: Wrong Credentials');
-        }
-        else {
-            console.log('Answer from database is\t', results);
-            console.log("Successful Login");
-        }
-    });
+    );
+    //console.log(succesfullLogin);
+    //return succesfull;
 }
 
 function register(name, age, email, pass) {
@@ -786,9 +799,12 @@ function register(name, age, email, pass) {
     console.log(query);
     connection.query(query, function (error, results, fields) {
         if (error) {
+            return;
             throw Error('Register Error: Connection Failure');
         }
         else {
+            succesfullRegister = true;
+
             console.log('Answer from database is\t', results);
             console.log("Successful Register");
         }
@@ -1007,7 +1023,7 @@ app.get("/favorite/events/:id", (req, res) => {
             console.log("Answer from database is\t", results[0]);
             //return results[0];
         }
-    });    
+    });
 });
 
 // REQUEST BODY ana kullanıcının id verir
@@ -1025,7 +1041,7 @@ app.get("/favorite/events", (req, res) => {
             console.log("Answer from database is\t", results[0]);
             //return results[0];
         }
-    });    
+    });
 });
 
 // İstenilen kullanıcının favorite placeleri
@@ -1041,7 +1057,7 @@ app.get("/favorite/places/:id", (req, res) => {
             console.log("Answer from database is\t", results[0]);
             //return results[0];
         }
-    });    
+    });
 });
 
 // REQUEST BODY ana kullanıcının id verir
@@ -1059,7 +1075,7 @@ app.get("/favorite/places", (req, res) => {
             console.log("Answer from database is\t", results[0]);
             //return results[0];
         }
-    });    
+    });
 });
 
 // Main Directory
@@ -1067,10 +1083,43 @@ app.get("/", (req, res) => {
     res.send("Home");
 });
 
-app.post("/places", (req, res) => {
+/*app.post("/places", (req, res) => {
     console.log(req.body);
     res.send(JSON.stringify(req.body));
+});*/
+app.post("/login", (req, res) => {
+    console.log(req.body.email, req.body.password);
+
+   login(req.body.email, req.body.password);
+
+    console.log("succesfull iss: " , succesfullLogin);
+    res.send({succesfullLogin: succesfullLogin, id: userId});
 });
+
+app.post("/register", (req, res) => {
+    console.log(req.body.name, req.body.age, req.body.email , req.body.password);
+    register(req.body.name, req.body.age, req.body.email , req.body.password);
+    res.send(succesfullRegister);
+
+});
+/*function login(email, pass) {
+    let query = 'SELECT id FROM user WHERE password="' + pass + '" AND email="' + email + '";';
+    connection.query(query, function (error, results, fields) {
+        if (error) {
+            //console.error("error logging in: " + error.stack);
+            throw Error('Login Error: Connection Failure');
+            return false;
+        }
+        else if (results.length === 0) {
+            //console.log('Answer from database is\t', results);
+            throw Error('Login Error: Wrong Credentials');
+        }
+        else {
+            console.log('Answer from database is\t', results);
+            console.log("Successful Login");
+        }
+    });
+}*/
 
 // Kankam ben silmedim
 // Sen bakınca silersin
@@ -1082,11 +1131,7 @@ app.get("/eventsList", (req, res) => {
     res.send(a);
 });*/
 
-app.get("/nearEventsList", (req, res) => {
-    console.log(req.body);
-    let a = ["piyasaYapmaca "];
-    res.send(a);
-});
+
 
 // Add otherwise forwarding
 app.get('*', (req, res, next) => {

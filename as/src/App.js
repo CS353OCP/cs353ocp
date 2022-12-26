@@ -18,11 +18,20 @@ import Profile from "./Pages/Profile";
 import Creator from "./Pages/Creator"
 import PaymentScreen from "./Pages/PaymentScreen";
 import Place from "./Pages/Place";
+import LoginFailed from "./Pages/LoginFailed";
 
 
 //                <Route path="*" element={< Navigate to="/error" replace />} />
 const App =()=> {
     const [isLoggedIn, setLoggedIn ] = useState(false);
+    const [user, setUser] = useState({
+            name: '',
+            age: 0,
+            email: '',
+            balance: 0
+        }
+    )
+    const [userId, setUserId]= useState()
     //sonra bu tokeni logine vermek lazım gerisi aynı gibi
     const [token, setToken] = useState();
 
@@ -38,8 +47,9 @@ const App =()=> {
         type: "",
     }]);
 
-    const logIn = ()=>{
+    const logIn = (userId)=>{
         setLoggedIn(true);
+        setUserId(userId);
     }
     const logOut=()=>{
         setLoggedIn(false);
@@ -58,12 +68,13 @@ const App =()=> {
                 <Route path="/Places" element={< Places />} />
                 <Route path="/Events" element={< Events isLoggedIn ={isLoggedIn} setEvent={setEvent}/>} />
                 <Route path="/Event" element={< Event event/>} />
-                <Route path="/Profile" element={< Profile />} />
+                <Route path="/Profile" element={< Profile id={userId}/>} />
                 <Route path="/Friend" element={< Friend />} />
                 <Route path="/Friends" element={< Friends />} />
                 <Route path="/Creator" element={< Creator />} />
                 <Route path="/PaymentScreen" element={< PaymentScreen />} />
                 <Route path="/Place" element={< Place />} />
+                <Route path="/LoginFailed" element={< LoginFailed />} />
 
               </Routes>
           </BrowserRouter>

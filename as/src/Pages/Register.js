@@ -3,14 +3,14 @@ import Button from "react-bootstrap/Button";
 import React, {useState} from "react";
 import {Route, useNavigate} from "react-router-dom";
 import axios from 'axios';
-import {createUser} from "../api";
+import {createUser, loginReq, register} from "../api";
 import "./Register.css"
 
 const Register = (props) =>{
     const navigate  = useNavigate();
     const [regData, setRegData] = useState ({
         name: '',
-        surname: '',
+        age: '',
         email: '',
         password: '',
 
@@ -18,7 +18,7 @@ const Register = (props) =>{
     function validateForm() {
         return regData.email.length > 0 && regData.password.length > 0;
     }
-    function handleSubmit(event) {
+    async function handleSubmit(event) {
         event.preventDefault();
         let data = {
             name: regData.name,
@@ -26,9 +26,17 @@ const Register = (props) =>{
             email: regData.email,
             password: regData.password
         }
-        createUser(data);
-        props.loginButton();
-        navigate('/home');
+        let res = false;
+        res = await register(regData.name, regData.age, regData.email, regData.password);
+        console.log(res);
+        if (res === true) {
+            props.loginButton();
+            navigate('/home');
+        } else {
+            navigate("/LoginFailed");
+        }
+        //props.loginButton();
+        //navigate('/home');
     }
     const Item = () => {
         let navigate = useNavigate();
@@ -57,13 +65,13 @@ const Register = (props) =>{
                             />
 
                         </Form.Group>
-                        <Form.Group size="lg" controlId="surname">
-                            <Form.Label>Surname</Form.Label>
+                        <Form.Group size="lg" controlId="age">
+                            <Form.Label>Age</Form.Label>
                             <Form.Control
                                 autoFocus
-                                type="surname"
-                                value={regData.surname}
-                                onChange={(e)=>setRegData({ ...regData, surname: e.target.value })}
+                                type="age"
+                                value={regData.age}
+                                onChange={(e)=>setRegData({ ...regData, age: e.target.value })}
                             />
 
                         </Form.Group>

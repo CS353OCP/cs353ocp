@@ -3,6 +3,7 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import "./Login.css";
 import {Route, useNavigate} from "react-router-dom";
+import {loginReq} from "../api";
 
 
 export default function Login(props) {
@@ -22,9 +23,20 @@ export default function Login(props) {
         navigate('/Home');
     }
 
-    const LogIn = ()=>{
+    const LogIn = async () => {
         //login(email, password)
-        props.loginButton();
+        console.log(email);
+        let res = false;
+        res = await loginReq(email, password);
+        console.log(res.data);
+        if(res.data.succesfullLogin === true){
+            props.loginButton(res.data.id);
+        }
+        else{
+            navigate("/LoginFailed");
+        }
+
+
     }
 
     const Item = () => {
