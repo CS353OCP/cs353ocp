@@ -391,80 +391,80 @@ function flushDB() {
          }
      }); */
 
-     // View
-     // AllUserLogin
-     var query = 'DROP View AllUserLogin;';
-     connection.query(query, function (error, results, fields) {
-         if (error) {
-             console.error('ERROR @ flush AllUserLogin' + error.stack);
-             return;
-         }
-         else {
-             console.log('View: AllUserLogin\nFlushed Succesfully');
-         }
-     });
+    // View
+    // AllUserLogin
+    var query = 'DROP View AllUserLogin;';
+    connection.query(query, function (error, results, fields) {
+        if (error) {
+            console.error('ERROR @ flush AllUserLogin' + error.stack);
+            return;
+        }
+        else {
+            console.log('View: AllUserLogin\nFlushed Succesfully');
+        }
+    });
 
-     // AllAdminLogin
-     var query = 'DROP View AllAdminLogin;';
-     connection.query(query, function (error, results, fields) {
-         if (error) {
-             console.error('ERROR @ flush AllAdminLogin' + error.stack);
-             return;
-         }
-         else {
-             console.log('View: AllAdminLogin\nFlushed Succesfully');
-         }
-     });
+    // AllAdminLogin
+    var query = 'DROP View AllAdminLogin;';
+    connection.query(query, function (error, results, fields) {
+        if (error) {
+            console.error('ERROR @ flush AllAdminLogin' + error.stack);
+            return;
+        }
+        else {
+            console.log('View: AllAdminLogin\nFlushed Succesfully');
+        }
+    });
 
-     // AllFollowAction
-     var query = 'DROP View AllFollowAction;';
-     connection.query(query, function (error, results, fields) {
-         if (error) {
-             console.error('ERROR @ flush AllFollowAction' + error.stack);
-             return;
-         }
-         else {
-             console.log('View: AllFollowAction\nFlushed Succesfully');
-         }
-     });
-
-
-     // AllPlaces
-     var query = 'DROP View AllPlaces;';
-     connection.query(query, function (error, results, fields) {
-         if (error) {
-             console.error('ERROR @ flush AllPlaces' + error.stack);
-             return;
-         }
-         else {
-             console.log('View: AllPlaces\nFlushed Succesfully');
-         }
-     });
+    // AllFollowAction
+    var query = 'DROP View AllFollowAction;';
+    connection.query(query, function (error, results, fields) {
+        if (error) {
+            console.error('ERROR @ flush AllFollowAction' + error.stack);
+            return;
+        }
+        else {
+            console.log('View: AllFollowAction\nFlushed Succesfully');
+        }
+    });
 
 
-     // AllEvents
-     var query = 'DROP View AllEvents;';
-     connection.query(query, function (error, results, fields) {
-         if (error) {
-             console.error('ERROR @ flush AllEvents' + error.stack);
-             return;
-         }
-         else {
-             console.log('View: AllEvents\nFlushed Succesfully');
-         }
-     });
+    // AllPlaces
+    var query = 'DROP View AllPlaces;';
+    connection.query(query, function (error, results, fields) {
+        if (error) {
+            console.error('ERROR @ flush AllPlaces' + error.stack);
+            return;
+        }
+        else {
+            console.log('View: AllPlaces\nFlushed Succesfully');
+        }
+    });
+
+
+    // AllEvents
+    var query = 'DROP View AllEvents;';
+    connection.query(query, function (error, results, fields) {
+        if (error) {
+            console.error('ERROR @ flush AllEvents' + error.stack);
+            return;
+        }
+        else {
+            console.log('View: AllEvents\nFlushed Succesfully');
+        }
+    });
 
     // AllBalance
-     var query = 'DROP View AllBalance;';
-     connection.query(query, function (error, results, fields) {
-         if (error) {
-             console.error('ERROR @ flush AllBalance' + error.stack);
-             return;
-         }
-         else {
-             console.log('View: AllBalance\nFlushed Succesfully');
-         }
-     });
+    var query = 'DROP View AllBalance;';
+    connection.query(query, function (error, results, fields) {
+        if (error) {
+            console.error('ERROR @ flush AllBalance' + error.stack);
+            return;
+        }
+        else {
+            console.log('View: AllBalance\nFlushed Succesfully');
+        }
+    });
 }
 
 function instantiateDB() {
@@ -768,24 +768,24 @@ function login(email, pass) {
     userId = query;
     //let succesfull = false;
     connection.query(query, function (error, results, fields) {
-            if (error) {
-                return false;
-                throw Error('Login Error: Connection Failure');
+        if (error) {
+            return false;
+            throw Error('Login Error: Connection Failure');
 
-            } else if (results.length === 0) {
-                //console.log('Answer from database is\t', results);
-                return false;
-                throw Error('Login Error: Wrong Credentials');
+        } else if (results.length === 0) {
+            //console.log('Answer from database is\t', results);
+            return false;
+            throw Error('Login Error: Wrong Credentials');
 
-            } else {
-                //return true;
+        } else {
+            //return true;
 
-                console.log('Answer from database is\t', results);
-                console.log("Successful Login");
-                succesfullLogin = true;
-                console.log("succesfulllk is 0", succesfullLogin);
-            }
+            console.log('Answer from database is\t', results);
+            console.log("Successful Login");
+            succesfullLogin = true;
+            console.log("succesfulllk is 0", succesfullLogin);
         }
+    }
     );
     //console.log(succesfullLogin);
     //return succesfull;
@@ -826,7 +826,7 @@ function addBalance(id, balanceToAdd) {
 }
 
 function removeBalance(id, balanceToRemove) {
-    const updateQuery = "UPDATE user SET balance = balance -" + balanceToRemove + " WHERE id=" + id + " AND balance >"+balanceToRemove+";";
+    const updateQuery = "UPDATE user SET balance = balance -" + balanceToRemove + " WHERE id=" + id + " AND balance >" + balanceToRemove + ";";
     connection.query(updateQuery, function (error, results, fields) {
         if (error) {
             console.error('error in transcation: ' + error.stack);
@@ -836,7 +836,19 @@ function removeBalance(id, balanceToRemove) {
             console.log("Answer from database is\t", results[0]);
         }
     });
+}
 
+function getView(viewName) {
+    const viewQuery = "SELECT * FROM "+balanceToRemove+";";
+    connection.query(viewQuery, function (error, results, fields) {
+        if (error) {
+            console.error('error in transcation: ' + error.stack);
+            return;
+        }
+        else {
+            console.log("Answer from database is\t", results[0]);
+        }
+    });
 }
 
 //Ending connection
@@ -881,7 +893,7 @@ app.get("/profile", (req, res) => {
 
 // /profile/3 3 idli kullanıcıyı döner
 // /profile/7 7 idli kullanıcıyı döner
-app.get("/profile/:id",(req, res) => {
+app.get("/profile/:id", (req, res) => {
     //const id = 3; //req.body.id;
     //console.log(req.params.id);
     const query = "SELECT name, age, email, balance FROM user WHERE id=" + req.params.id + ";";
@@ -976,7 +988,7 @@ app.get("/places", cors(), (req, res) => {
 // REQUEST BODY ana kullanıcının id verir
 // Return followed people by logged in account
 app.get("/following", (req, res) => {
-    const id= 3; //req.body.id;
+    const id = 3; //req.body.id;
     const query = "SELECT followedID FROM follows WHERE followerID=" + id + ";";
     connection.query(query, function (error, results, fields) {
         if (error) {
@@ -994,7 +1006,7 @@ app.get("/following", (req, res) => {
 // REQUEST BODY ana kullanıcının id verir
 // Return followers of the account logged in
 app.get("/followers", (req, res) => {
-    const id =3; //req.body.id;
+    const id = 3; //req.body.id;
     const query = "SELECT followerID FROM follows WHERE followedID=" + id + ";";
     connection.query(query, function (error, results, fields) {
         if (error) {
@@ -1029,7 +1041,7 @@ app.get("/favorite/events/:id", (req, res) => {
 // REQUEST BODY ana kullanıcının id verir
 // Return favorite events of logged in account
 app.get("/favorite/events", (req, res) => {
-    const id =3; //req.body.id;
+    const id = 3; //req.body.id;
     const query = "SELECT name, date, type, quota, available, restrictions, price FROM liked_events, event WHERE uid=" + id + " AND eid=event.id;";
     connection.query(query, function (error, results, fields) {
         if (error) {
@@ -1063,7 +1075,7 @@ app.get("/favorite/places/:id", (req, res) => {
 // REQUEST BODY ana kullanıcının id verir
 // Return favorite places of logged in account
 app.get("/favorite/places", (req, res) => {
-    const id =3; //req.body.id;
+    const id = 3; //req.body.id;
     const query = "SELECT name, country, province, address FROM liked_places, place WHERE uid=" + id + " AND pid=place.id;";
     connection.query(query, function (error, results, fields) {
         if (error) {
@@ -1090,15 +1102,15 @@ app.get("/", (req, res) => {
 app.post("/login", (req, res) => {
     console.log(req.body.email, req.body.password);
 
-   login(req.body.email, req.body.password);
+    login(req.body.email, req.body.password);
 
-    console.log("succesfull iss: " , succesfullLogin);
-    res.send({succesfullLogin: succesfullLogin, id: userId});
+    console.log("succesfull iss: ", succesfullLogin);
+    res.send({ succesfullLogin: succesfullLogin, id: userId });
 });
 
 app.post("/register", (req, res) => {
-    console.log(req.body.name, req.body.age, req.body.email , req.body.password);
-    register(req.body.name, req.body.age, req.body.email , req.body.password);
+    console.log(req.body.name, req.body.age, req.body.email, req.body.password);
+    register(req.body.name, req.body.age, req.body.email, req.body.password);
     res.send(succesfullRegister);
 
 });
